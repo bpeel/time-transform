@@ -1,6 +1,8 @@
 #include "header.h"
 
-#define N_TRANSFORMS G_MAXINT
+#include <stdlib.h>
+
+#define N_TRANSFORMS (1 << 23)
 
 #define TIME_FUNC(func)                                                 \
   g_timer_start (timer);                                                \
@@ -14,15 +16,9 @@
           /* stride out */                                              \
           sizeof (float) * 3,                                           \
           verts_out,                                                    \
-          4);                                                           \
+          n_verts);                                                     \
                                                                         \
-  printf (#func " time = %f\n", g_timer_elapsed (timer, NULL));         \
-                                                                        \
-  printf ("result = (%f,%f,%f),(%f,%f,%f),(%f,%f,%f),(%f,%f,%f)\n",     \
-          verts_out[0], verts_out[1], verts_out[2],                     \
-          verts_out[3], verts_out[4], verts_out[5],                     \
-          verts_out[6], verts_out[7], verts_out[8],                     \
-          verts_out[9], verts_out[10], verts_out[11]);
+  printf (#func " time = %f\n", g_timer_elapsed (timer, NULL));
 
 int
 main (int argc, char **argv)
@@ -47,13 +43,16 @@ main (int argc, char **argv)
       .ww = 1
     };
   GTimer *timer;
-  int i;
-  float verts[] = { 0, 0, 0,
-                    0, 213, 0,
-                    200, 213, 0,
-                    200, 0, 0 };
-  float verts_out[G_N_ELEMENTS (verts)] =
-    { 1, 2, 3, 4, 5, 6, 7, 8, 0, 1, 2, 3 };
+  int i, n_verts = 4;
+  float *verts, *verts_out;
+
+  if (argc > 1)
+    n_verts = atoi (argv[1]);
+
+  verts = g_malloc (sizeof (float) * n_verts * 3);
+  verts_out = g_malloc (sizeof (float) * n_verts * 3);
+
+  printf ("n_verts = %i\n", n_verts);
 
   timer = g_timer_new ();
 
