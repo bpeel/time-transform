@@ -321,7 +321,7 @@ project_points_f4_sse (const CoglMatrix *matrix,
      "mulps %%xmm5, %%xmm1\n"
      /* Multiply the z coordinate by the third column of the matrix */
      "mulps %%xmm6, %%xmm2\n"
-     /* Multiply the w coordinate by the third column of the matrix */
+     /* Multiply the w coordinate by the fourth column of the matrix */
      "mulps %%xmm7, %%xmm3\n"
      /* Add in the results of multiplying the y coordinate */
      "addps %%xmm1, %%xmm0\n"
