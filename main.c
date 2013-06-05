@@ -52,7 +52,7 @@ main (int argc, char **argv)
   verts = g_malloc (sizeof (float) * n_verts * 3);
   verts_out = g_malloc (sizeof (float) * n_verts * 3);
 
-  printf ("n_verts = %i\n", n_verts);
+  printf ("n_verts = %i (give a command line argument to change)\n", n_verts);
 
   timer = g_timer_new ();
 
