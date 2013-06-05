@@ -19,6 +19,14 @@ typedef struct _Point3f
   float x, y, z;
 } Point3f;
 
+typedef struct _Point4f
+{
+  float x;
+  float y;
+  float z;
+  float w;
+} Point4f;
+
 void
 transform_points_f2_sse (const CoglMatrix *matrix,
                          size_t stride_in,
@@ -50,3 +58,35 @@ transform_points_f3_gcc (const CoglMatrix *matrix,
                          size_t stride_out,
                          void *points_out,
                          int n_points);
+
+void
+project_points_f3_sse (const CoglMatrix *matrix,
+                       size_t stride_in,
+                       void *points_in,
+                       size_t stride_out,
+                       void *points_out,
+                       int n_points);
+
+void
+project_points_f3_gcc (const CoglMatrix *matrix,
+                       size_t stride_in,
+                       const void *points_in,
+                       size_t stride_out,
+                       void *points_out,
+                       int n_points);
+
+void
+project_points_f4_sse (const CoglMatrix *matrix,
+                       size_t stride_in,
+                       void *points_in,
+                       size_t stride_out,
+                       void *points_out,
+                       int n_points);
+
+void
+project_points_f4_gcc (const CoglMatrix *matrix,
+                       size_t stride_in,
+                       const void *points_in,
+                       size_t stride_out,
+                       void *points_out,
+                       int n_points);
