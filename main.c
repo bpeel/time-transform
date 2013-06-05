@@ -56,10 +56,10 @@ main (int argc, char **argv)
 
   timer = g_timer_new ();
 
-  TIME_FUNC (transform_points_f2_sse);
-  TIME_FUNC (transform_points_f2_gcc);
   TIME_FUNC (transform_points_f3_sse);
   TIME_FUNC (transform_points_f3_gcc);
+  TIME_FUNC (transform_points_f2_sse);
+  TIME_FUNC (transform_points_f2_gcc);
 
   return 0;
 }
