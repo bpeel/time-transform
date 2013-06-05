@@ -2,7 +2,7 @@ OBJS = main.o matrix-functions.o
 FLAGS_COMMON=-g -Wall -O3
 CFLAGS = `pkg-config glib-2.0 --cflags` $(FLAGS_COMMON)
 LDFLAGS = `pkg-config glib-2.0 --libs`
-CFLAGS32 = `PKG_CONFIG_PATH=/usr/lib/pkgconfig pkg-config glib-2.0 --cflags` -msse2 -mfpmath=sse $(FLAGS_COMMON) -m32
+CFLAGS32 = `PKG_CONFIG_PATH=/usr/lib/pkgconfig pkg-config glib-2.0 --cflags` -msse2 $(FLAGS_COMMON) -m32
 LDFLAGS32 = `PKG_CONFIG_PATH=/usr/lib/pkgconfig pkg-config glib-2.0 --libs` -m32
 
 all : time-transform time-transform-32
