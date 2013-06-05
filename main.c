@@ -8,7 +8,7 @@
   for (i = 0; i < N_TRANSFORMS; i++)                                    \
     func (&matrix,                                                      \
           /* stride in */                                               \
-          sizeof (float) * 2,                                           \
+          sizeof (float) * 3,                                           \
           /* points in */                                               \
           verts,                                                        \
           /* stride out */                                              \
